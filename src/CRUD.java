@@ -1,11 +1,10 @@
 import java.sql.*;
 
-public class jdbconnection {
+public class CRUD {
     public static void main(String[] args) throws Exception{
-        //1)LOADING DRIVERS
         Class.forName("com.mysql.cj.jdbc.Driver");
         //2)ESTABLISHING THE CONNECTION
-        String url = "jdbc:mysql://localhost:330/world";
+        String url = "jdbc:mysql://localhost:330/mydatabasse";
         String uname = "root";
         String pwd = "root";
 
@@ -21,17 +20,18 @@ public class jdbconnection {
 
         //3)CREATING THE STATEMENT
         Statement st = con.createStatement();//FOR SENDING SQL OBJECTS TO DATA BASE
+        String create = "create table student(sid int auto_increment primary key,regno int,name varchar(20),age int,gpa double,check(age>=18))";
 
-        //****************8FROM HERE THE CODE CHAGES **************************
-        //4)EXECUTE QUIRIES
-        String query = "select * from city limit 5";
-        ResultSet res = st.executeQuery(query); // TO EXECUTE QUERY INT HE DATABASEL
-
-        //PROCESS RESULTS
-        while(res.next()){
-            System.out.println(res.getInt(1) + "  " + res.getString(2));//FOR CHAR USE getString() ||||| FOR INT USE getInt()
+        int x = st.executeUpdate(create);//RETURN VALUE(0) INT IF SUCCESSFULL
+        System.out.print(x);
+        if(x >= 0){
+            System.out.println("created table successfully");
         }
-        //5)CLOSING THE CONNECTION
-        con.close();
+        else{
+            System.out.println("not created");
+        }
+
+
+
     }
 }
