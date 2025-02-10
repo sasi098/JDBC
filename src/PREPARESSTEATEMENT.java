@@ -47,7 +47,7 @@ public class PREPARESSTEATEMENT {
 
         int y = prep.executeUpdate();
         if(y >= 0){
-            System.out.println(y + " rows updated");
+            System.out.println(y + " rows uDpdated");
         }
 
         ResultSet res = prep.executeQuery("select * from info");
