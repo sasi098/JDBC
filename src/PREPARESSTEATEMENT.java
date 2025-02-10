@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.Scanner;
 
 public class PREPARESSTEATEMENT {
     public static void main(String[] args) throws Exception{
@@ -29,26 +30,42 @@ public class PREPARESSTEATEMENT {
 //        }
 
         //2)PREPARED STATEMENT INTERFACE
-        String q1 = "insert into info values (?,?,?)";
-        PreparedStatement prep = con.prepareStatement(q1);
+//        String q1 = "insert into info values (?,?,?)";
+//        PreparedStatement prep = con.prepareStatement(q1);
+//
+//        prep.setString(1,"lohith");
+//        prep.setInt(2,19);
+//        prep.setDouble(3,8.42);
+//
+//        int x = prep.executeUpdate();
+//        if(x >= 0){
+//            System.out.println(x + " records inserted");
+//        }
 
-        prep.setString(1,"lohith");
-        prep.setInt(2,19);
-        prep.setDouble(3,8.42);
+        //UPDATION
+//        prep = con.prepareStatement("update info set name=? where name=?");
+//        prep.setString(1,"avinash");
+//        prep.setString(2,"lohith");
+//
+//        int y = prep.executeUpdate();
+//        if(y >= 0){
+//            System.out.println(y + " rows uDpdated");
+//        }
 
-        int x = prep.executeUpdate();
-        if(x >= 0){
-            System.out.println(x + " records inserted");
-        }
-
-        prep = con.prepareStatement("update info set name=? where name=?");
-        prep.setString(1,"avinash");
-        prep.setString(2,"lohith");
-
-        int y = prep.executeUpdate();
-        if(y >= 0){
-            System.out.println(y + " rows uDpdated");
-        }
+        //INSERTING DATA FROM INPUT
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the name : ");
+        String name = sc.nextLine();
+        System.out.print("Enter age : ");
+        int age = sc.nextInt();
+        System.out.print("Enter gpa to be inserted : ");
+        double gpa = sc.nextDouble();
+        String query = "insert into info values(?,?,?)";
+        PreparedStatement prep = con.prepareStatement(query);
+        prep.setString(1,name);
+        prep.setInt(2,age);
+        prep.setDouble(3,gpa);
+        prep.executeUpdate();
 
         ResultSet res = prep.executeQuery("select * from info");
         while(res.next()){
