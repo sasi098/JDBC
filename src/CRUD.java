@@ -32,26 +32,41 @@ public class CRUD {
 //        }//***********WE ARE DOING ABOVE -> CREATE FOR ONLY ONE TIME BECAUSE TABLE IS CREATED FOR ONLY ONE TIME
         //IF WE CHECK ALREADY TABLE IS CREATED INT HE MY SQL DATABASE
 
-        //INSERT QUERY
-//        String insert = "insert into student (regno,name,age,gpa) values(1931,'sasi',19,8.2)";
-//        int x = st.executeUpdate(insert);//WE USE INT FOR INSERTION BECAUSE IT RETURNS LINE 0 ROWS UPADTED;
+          //INSERT QUERY
+//        String insert = "insert into student (regno,name,age,gpa) values(1777,'lohith',19,8.2),(5049,'avinash',19,8.8),(1393,'hemanth',19,9.2)";
+//        int Y = st.executeUpdate(insert);//WE USE INT FOR INSERTION BECAUSE IT RETURNS LINE 0 ROWS UPADTED;
 //
-//        if(x >= 0){
-//            System.out.println(x + " inserted data successfully");
+//        if(Y >= 0){
+//            System.out.println(Y + " inserted data successfully");
 //        }
 //        else{
 //            System.out.println("error in insertion");
 //        }//ONLY ONCE
 
-        String update = "update Student set age=20 where age=19";
-        int x = st.executeUpdate(update);
+//        //UPDATION
+//        String update = "update Student set age=20 where age=19";
+//        int x = st.executeUpdate(update);
+//
+//        if(x >= 0){
+//            System.out.println(x + " updated data successfully");
+//        }
+//        else{
+//            System.out.println("error in insertion");
+//        }
 
-        if(x >= 0){
-            System.out.println(x + " updated     data successfully");
+
+        //DELETE
+        String delete = "delete from student where regno=1777";
+        int z = st.executeUpdate(delete);
+        if(z >= 0){
+            System.out.println(z + " deleted data successfully");
         }
         else{
             System.out.println("error in insertion");
         }
+
+
+
 //        while(res.next()){
 //            System.out.println(res.getInt(1) + " " + res.getInt(2) + " " + res.getString(3) + " " + res.getInt(4) + " " + res.getDouble(5) + " ");
 //        }
