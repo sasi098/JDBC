@@ -71,6 +71,7 @@ public class PREPARESSTEATEMENT {
         while(res.next()){
             System.out.println(res.getString(1) + " " + res.getInt(2) + " " + res.getDouble(3));
         }
+
         con.close();
     }
 }
