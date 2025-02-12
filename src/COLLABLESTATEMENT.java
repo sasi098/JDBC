@@ -21,26 +21,16 @@ public class COLLABLESTATEMENT {
         }
 
         //3)CREATING THE STATEMENT
-        Statement st = con.createStatement();//FOR SENDING SQL OBJECTS TO DATA BASE
-        // calling stored procedure
-        // String query = "{call first_proc1(?,?)}"; // calling procedure
-        Scanner in = new Scanner(System.in);
-        //Calling stored function
-        String query = "{? = call add_ab(?,?)}";
-        CallableStatement cst = con.prepareCall(query);
+//        Statement st = con.createStatement();//FOR SENDING SQL OBJECTS TO DATA BASE
+        String query = "{call first_pro(?,?)}"; //CALLING THE STORED FUNCTION
 
-        System.out.println("Enter two input values");
-        int a = in.nextInt();
-        int b = in.nextInt();
+        CallableStatement call = con.prepareCall(query);
+        call.setInt(1,5);//SETTING A VALUE
+        call.registerOutParameter(2,Types.INTEGER);
+        call.execute();//EXECUTE THE STORED PROCEDURE
 
-        cst.setInt(2,a); // setting the i/p param - second ?
-        cst.setInt(3,b); //  third ?
-        cst.registerOutParameter(1, Types.INTEGER);
-
-        cst.execute(); // executing the stored function
-
-        int result = cst.getInt(1); //
-        System.out.println("Sum : "+result);
+        int result = call.getInt(2);
+        System.out.println(result);
 
 
     }
