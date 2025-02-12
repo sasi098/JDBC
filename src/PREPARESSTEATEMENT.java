@@ -21,7 +21,7 @@ public class PREPARESSTEATEMENT {
         }
 
         //3)CREATING THE STATEMENT
-        Statement st = con.createStatement();//FOR SENDING SQL OBJECTS TO DATA BASE
+//        Statement st = con.createStatement();//FOR SENDING SQL OBJECTS TO DATA BASE
         //1)STATEMENT INTERFACE
 //        String query = "create table info(name varchar(20),age int,cgpa double)";
 //        int x = st.executeUpdate(query);
