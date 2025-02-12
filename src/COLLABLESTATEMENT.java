@@ -23,9 +23,11 @@ public class COLLABLESTATEMENT {
         //3)CREATING THE STATEMENT
 //        Statement st = con.createStatement();//FOR SENDING SQL OBJECTS TO DATA BASE
         String query = "{call first_pro(?,?)}"; //CALLING THE STORED FUNCTION
-
+        Scanner sc = new Scanner(System.in);
+        System.out.print("enter the number");
+        int a = sc.nextInt();
         CallableStatement call = con.prepareCall(query);
-        call.setInt(1,5);//SETTING A VALUE
+        call.setInt(1,a);//SETTING A VALUE
         call.registerOutParameter(2,Types.INTEGER);
         call.execute();//EXECUTE THE STORED PROCEDURE
 
