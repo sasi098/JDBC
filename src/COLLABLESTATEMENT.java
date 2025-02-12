@@ -20,20 +20,29 @@ public class COLLABLESTATEMENT {
             System.out.println("There is a problem in connection establishment");
         }
 
-        //3)CREATING THE STATEMENT
+        //FOR PRECUDUREAL STORED
 //        Statement st = con.createStatement();//FOR SENDING SQL OBJECTS TO DATA BASE
-        String query = "{call first_pro(?,?)}"; //CALLING THE STORED FUNCTION
-        Scanner sc = new Scanner(System.in);
-        System.out.print("enter the number");
-        int a = sc.nextInt();
+//        String query = "{call first_pro(?,?)}"; //CALLING THE STORED FUNCTION
+//        Scanner sc = new Scanner(System.in);
+//        System.out.print("enter the number");
+//        int a = sc.nextInt();
+//        CallableStatement call = con.prepareCall(query);
+//        call.setInt(1,a);//SETTING A VALUE
+//        call.registerOutParameter(2,Types.INTEGER);
+//        call.execute();//EXECUTE THE STORED PROCEDURE
+//
+//        int result = call.getInt(2);
+//        System.out.println(result);
+
+        String query = "{? = call sirst_fun(?,?)}";
         CallableStatement call = con.prepareCall(query);
-        call.setInt(1,a);//SETTING A VALUE
-        call.registerOutParameter(2,Types.INTEGER);
-        call.execute();//EXECUTE THE STORED PROCEDURE
+        call.setInt(2,123);
+        call.setInt(3,1);
+        call.registerOutParameter(1,Types.INTEGER);
+        call.execute();
 
-        int result = call.getInt(2);
-        System.out.println(result);
-
+        int res = call.getInt(1);
+        System.out.println(res);
 
     }
 }
